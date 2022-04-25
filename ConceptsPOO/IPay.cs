@@ -2,6 +2,6 @@
 {
     public interface IPay
     {
-        void GetValueToPay();
+        public decimal GetValueToPay();
     }
 }

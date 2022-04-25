@@ -17,6 +17,7 @@
       <Property Name="BirthDate" />
       <Property Name="HiringDate" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ConceptsPOO.SalaryEmployee">
     <Position X="5.25" Y="1" Width="1.5" />
@@ -31,6 +32,28 @@
       <HashCode>AAAAAAAAAAAAAAAEAAAABAAAAIAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>CommissionEmploye.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="ConceptsPOO.HourlyEmployee">
+    <Position X="3.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAEAAAAAAAAAAABAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>HourlyEmployee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConceptsPOO.BaseCommissionEmployee">
+    <Position X="5.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAQAA=</HashCode>
+      <FileName>BaseCommissionEmployee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConceptsPOO.Invoice">
+    <Position X="7.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAAAEAAAAAAAAAAAAAAAIAAAAgAAAAAA=</HashCode>
+      <FileName>Invoice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="ConceptsPOO.IPay">
     <Position X="7" Y="0.5" Width="1.5" />
