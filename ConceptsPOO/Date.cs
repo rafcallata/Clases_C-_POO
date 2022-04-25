@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConceptsPOO
+﻿namespace ConceptsPOO
 {
     public class Date
     {
@@ -24,7 +18,7 @@ namespace ConceptsPOO
             {
                 return day;
             }
-            int[] daysPerMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+            int[] daysPerMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
             if (day >= 1 && day <= daysPerMonth[month])
             {
                 return day;
@@ -72,7 +66,7 @@ namespace ConceptsPOO
 
         public override string ToString()
         {
-            return $"{_year}/{_month}/{_day}";
+            return $"{_year}/{_month:00}/{_day:00}";
         }
     }
 }

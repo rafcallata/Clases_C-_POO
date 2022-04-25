@@ -3,9 +3,41 @@
   <Class Name="ConceptsPOO.Date">
     <Position X="0.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAEAAAMAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAEAAAMAQAACAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Date.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="ConceptsPOO.Employee">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAEEAAQAAQAAAAAAAAIAAAAAAAAAAg=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BirthDate" />
+      <Property Name="HiringDate" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConceptsPOO.SalaryEmployee">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>SalaryEmployee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConceptsPOO.CommissionEmploye">
+    <Position X="5.25" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAABAAAAIAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>CommissionEmploye.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ConceptsPOO.IPay">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>IPay.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
