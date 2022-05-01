@@ -39,11 +39,10 @@ namespace Shooping.Models
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:7029/images/noimage.png"
-            : $"https://shoppingzulu.blob.core.windows.net/users/{ImageId}";
-        //: $"https://localhost:7029/images/users/{ImageId}";
-
+            : $"https://shoppingrafa.blob.core.windows.net/users/{ImageId}";
+        
         [Display(Name = "Image")]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
 
         [Display(Name = "País")]
         [Range(1, int.MaxValue, ErrorMessage = "Debes de seleccionar un país.")]
