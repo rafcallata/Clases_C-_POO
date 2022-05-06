@@ -44,5 +44,6 @@ namespace Shooping.Data.Entities
             ? $"https://localhost:7029/images/noimage.png"
             : ProductImages.FirstOrDefault().ImageFullPath;
 
+        public ICollection<SaleDetail> SaleDetails { get; set; }
     }
 }
