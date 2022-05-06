@@ -16,7 +16,7 @@ html {
 body {
   margin-bottom: 60px;
 }
-@charset "utf-8";
+/*@charset "utf-8";
 
 .card {
     display: flex;
@@ -60,7 +60,7 @@ body {
     left: 0;
     z-index: 1;
     content: ""
-}
+}*/
 /*Zoom images*/
 .zoom {
     padding: 5px;
@@ -71,8 +71,8 @@ body {
     margin: 0 auto;
 }
 
-    .zoom:hover {
-        -ms-transform: scale(2); /* IE 9 */
-        -webkit-transform: scale(2); /* Safari 3-8 */
-        transform: scale(2);
-    }
+.zoom:hover {
+    -ms-transform: scale(2); /* IE 9 */
+    -webkit-transform: scale(2); /* Safari 3-8 */
+    transform: scale(2);
+}

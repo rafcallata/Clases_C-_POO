@@ -24,35 +24,12 @@ namespace Shooping.Controllers
         public async Task<IActionResult> Index()
         {
             List<Product> products = await _context.Products
-                .Include(p => p.ProductImages)
-                .Include(p => p.ProductCategories)
-                .OrderBy(p => p.Description)
-                .ToListAsync();
-            List<ProductsHomeViewModel> productsHome = new() { new ProductsHomeViewModel() };
-            int i = 1;
-            foreach (Product? product in products)
-            {
-                if (i == 1)
-                {
-                    productsHome.LastOrDefault().Product1 = product;
-                }
-                if (i == 2)
-                {
-                    productsHome.LastOrDefault().Product2 = product;
-                }
-                if (i == 3)
-                {
-                    productsHome.LastOrDefault().Product3 = product;
-                }
-                if (i == 4)
-                {
-                    productsHome.LastOrDefault().Product4 = product;
-                    productsHome.Add(new ProductsHomeViewModel());
-                    i = 0;
-                }
-                i++;
-            }
-            HomeViewModel model = new() { Products = productsHome };
+               .Include(p => p.ProductImages)
+               .Include(p => p.ProductCategories)
+               .OrderBy(p => p.Description)
+               .ToListAsync();
+
+            HomeViewModel model = new() { Products = products };
             User user = await _userHelper.GetUserAsync(User.Identity.Name);
             if (user != null)
             {
@@ -62,6 +39,7 @@ namespace Shooping.Controllers
             }
 
             return View(model);
+
         }
 
         public IActionResult Privacy()
