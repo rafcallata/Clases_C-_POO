@@ -130,7 +130,7 @@ namespace Shooping.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "productImages",
+                name: "ProductImages",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -371,7 +371,7 @@ namespace Shooping.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_productImages_ProductId",
-                table: "productImages",
+                table: "ProductImages",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -414,7 +414,7 @@ namespace Shooping.Migrations
                 name: "ProductCategories");
 
             migrationBuilder.DropTable(
-                name: "productImages");
+                name: "ProductImages");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

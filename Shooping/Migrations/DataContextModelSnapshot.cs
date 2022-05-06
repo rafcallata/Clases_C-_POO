@@ -298,7 +298,7 @@ namespace Shooping.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("productImages");
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("Shooping.Data.Entities.State", b =>
