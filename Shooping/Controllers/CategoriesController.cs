@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shooping.Data;
 using Shooping.Data.Entities;
+using Vereyon.Web;
 
 namespace Shooping.Controllers
 {
@@ -10,11 +11,13 @@ namespace Shooping.Controllers
     public class CategoriesController : Controller
 	{
 		private readonly DataContext _context;
+        private readonly IFlashMessage _flashMessage;
 
-		public CategoriesController(DataContext context)
+        public CategoriesController(DataContext context, IFlashMessage flashMessage)
 		{
 			_context = context;
-		}
+            _flashMessage = flashMessage;
+        }
 		// GET: Countries
 		[HttpGet]
 		public async Task<IActionResult> Index()
@@ -47,16 +50,16 @@ namespace Shooping.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe una categoría con el mismo nombre.");
+                        _flashMessage.Danger("Ya existe una categoría con el mismo nombre.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                        _flashMessage.Danger(dbUpdateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(exception.Message);
                 }
             }
             return View(category);
@@ -102,16 +105,16 @@ namespace Shooping.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe una categoría con el mismo nombre.");
+                        _flashMessage.Danger("Ya existe una categoría con el mismo nombre.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                        _flashMessage.Danger(dbUpdateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(exception.Message);
                 }
             }
 
@@ -161,6 +164,7 @@ namespace Shooping.Controllers
             Category category = await _context.Categories.FindAsync(id);
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
+            _flashMessage.Info("Registro Borrado");
             return RedirectToAction(nameof(Index));
         }
     }

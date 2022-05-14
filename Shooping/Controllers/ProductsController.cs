@@ -5,6 +5,7 @@ using Shooping.Data;
 using Shooping.Data.Entities;
 using Shooping.Helpers;
 using Shooping.Models;
+using Vereyon.Web;
 
 namespace Shooping.Controllers
 {
@@ -14,11 +15,14 @@ namespace Shooping.Controllers
         private readonly DataContext _context;
         private readonly ICombosHelper _combosHelper;
         private readonly IBlobHelper _blobHelper;
-        public ProductsController(DataContext context, ICombosHelper combosHelper, IBlobHelper blobHelper)
+        private readonly IFlashMessage _flashMessage;
+
+        public ProductsController(DataContext context, ICombosHelper combosHelper, IBlobHelper blobHelper, IFlashMessage flashMessage)
         {
             _context = context;
             _combosHelper = combosHelper;
             _blobHelper = blobHelper;
+            _flashMessage = flashMessage;
         }
 
         [HttpGet]
@@ -82,16 +86,16 @@ namespace Shooping.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe un producto con el mismo nombre.");
+                        _flashMessage.Danger("Ya existe un producto con el mismo nombre.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                        _flashMessage.Danger(dbUpdateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(exception.Message);
                 }
             }
             model.Categories = await _combosHelper.GetComboCategoriesAsync();
@@ -145,16 +149,16 @@ namespace Shooping.Controllers
             {
                 if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                 {
-                    ModelState.AddModelError(string.Empty, "Ya existe un producto con el mismo nombre.");
+                    _flashMessage.Danger("Ya existe un producto con el mismo nombre.");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    _flashMessage.Danger(dbUpdateException.InnerException.Message);
                 }
             }
             catch (Exception exception)
             {
-                ModelState.AddModelError(string.Empty, exception.Message);
+                _flashMessage.Danger(exception.Message);
             }
             return View(model);
         }
@@ -223,7 +227,7 @@ namespace Shooping.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(exception.Message);
                 }
             }
             return View(model);
@@ -248,6 +252,7 @@ namespace Shooping.Controllers
             await _blobHelper.DeleteBlobAsync(productImage.ImageId, "products");
             _context.ProductImages.Remove(productImage);
             await _context.SaveChangesAsync();
+            _flashMessage.Info("Registro de Imagenes Borrados");
             return RedirectToAction(nameof(Details), new { Id = productImage.Product.Id });
         }
 
@@ -301,7 +306,7 @@ namespace Shooping.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(exception.Message);
                 }
             }
             
@@ -330,6 +335,7 @@ namespace Shooping.Controllers
             }
             _context.ProductCategories.Remove(productCategory);
             await _context.SaveChangesAsync();
+            _flashMessage.Info("Registro Borrado");
             return RedirectToAction(nameof(Details), new { Id = productCategory.Product.Id });
         }
 
@@ -366,6 +372,7 @@ namespace Shooping.Controllers
             {
                 await _blobHelper.DeleteBlobAsync(productImage.ImageId, "products");
             }
+            _flashMessage.Info("Registro Imagen Borrado");
             return RedirectToAction(nameof(Index));
         }
 
