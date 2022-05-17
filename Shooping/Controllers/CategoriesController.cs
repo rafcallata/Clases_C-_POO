@@ -25,24 +25,8 @@ namespace Shooping.Controllers
 		public async Task<IActionResult> Index()
 		{
 			return View(await _context.Categories.Include(c => c.ProductCategories).ToListAsync());
-		}        
-        // GET: Countries/Details/5
-        [HttpGet]
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Category category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
-        }
+		}       
+       
         // GET: Countries/Delete/5        
         [NoDirectAccess]
         public async Task<IActionResult> Delete(int? id)
